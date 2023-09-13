@@ -7,3 +7,8 @@
 body,html {
   width: 100%;
 }
+
+:root {
+  /*^ fonts */
+  --Poppins: 'Poppins', sans-serif;
+}
