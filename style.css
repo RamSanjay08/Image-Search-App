@@ -88,6 +88,20 @@ form {
   text-transform: capitalize;
 }
 
+.show-more-button {
+  background-color: #138065;
+  display: flex;
+  margin: auto;
+  padding: .7rem 1.4rem;
+  border-radius: .3rem;
+  font-size: 1.1rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
 
   .search-results {
