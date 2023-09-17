@@ -102,13 +102,18 @@ form {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
 
   .search-results {
     padding: 1.2rem;
   }
   .search-result {
-    width: 45%;
+    width: 49%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .search-result {
+    width: 48%;
   }
 }
 
