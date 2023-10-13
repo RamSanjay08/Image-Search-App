@@ -26,7 +26,7 @@ form {
   margin-bottom: 3rem;
 }
 
-.input-box {
+#input-box {
   width: 60%;
   max-width: 400px;
   padding: .9rem 1.3rem;
@@ -38,7 +38,7 @@ form {
   outline: none;
 }
 
-.search-button {
+#search-button {
   background-color: #138065;
   padding: .9rem 2rem;
   color: #fff;
@@ -50,7 +50,7 @@ form {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
-.search-results {
+#search-results {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
