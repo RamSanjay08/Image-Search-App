@@ -12,14 +12,14 @@
 </head>
 <body>
   <h1 class="title">Image Search App</h1>
-  <form action="">
-  <input type="text" id="input-box" placeholder="Search your Image">
-  <button id="search-button" onclick="getImages()">Search</button>
-</form>
+  <form id="search-box" onsubmit="return getImages(event)">
+    <input type="text" id="input-box" placeholder="Search your Image">
+    <button id="search-button" >Search</button>
+  </form>
 
 <div id="search-results">
-  <!-- <div class="search-result">
-    <img id="imageOne" src="https://images.unsplash.com/photo-1682685797406-97f364419b4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw1Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Across the Matrix">
+  <div class="search-result">
+    <img src="https://images.unsplash.com/photo-1682685797406-97f364419b4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw1Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Across the Matrix">
     <a id="title" href="https://unsplash.com/photos/wbOKjgQv3nY" target="_blank">Across the Matrix</a>
   </div>
   <div class="search-result">
@@ -29,9 +29,11 @@
   <div class="search-result">
     <img src="https://images.unsplash.com/photo-1682685797406-97f364419b4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw1Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Across the Matrix">
     <a href="https://unsplash.com/photos/wbOKjgQv3nY" target="_blank">Across the Matrix</a>
-  </div> -->
+  </div>
 </div>
-<button class="show-more-button">Show More</button>
+
+<!--^ Show-More -->
+<button id="show-more-button">Show More</button>
 
 <script src="./app.js"></script>
 </body>
