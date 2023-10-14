@@ -1,24 +1,28 @@
 let form = document.getElementById("search-box")
 let searchInput = document.getElementById("input-box")
-let searchButton = document.getElementById("search-button")
 let searchResults = document.getElementById("search-results")
 let showMoreBtn = document.getElementById("show-more-button")
 
 let inputData = ""
 let page = 1
+let maxpages = 3
 
 async function getImages() {
   try{
   inputData = searchInput.value
   const apiKey = "JPrtOJqiSEm6pRh4wtlCYhmA2qRoaJemKNPAj9ANagE"
+  if (inputData.trim() === "") {
+    alert("The search field cannot be empty")
+    return 
+  }
+  for(let i = 0; i < maxpages;i++) {
   const data = await fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${apiKey}`)
   let response = await data.json()
   console.log(response);
 
 if (page === 1) {
-  searchResults.innerHTML= "" 
+  searchResults.innerHTML= ""
 }
-
   response.results.map((result) => {
     let ImageWrapper = document.createElement("div")
     ImageWrapper.classList.add("search-result")
@@ -35,22 +39,96 @@ if (page === 1) {
     searchResults.appendChild(ImageWrapper)
 
     page++
-    if (page > 1) {
+    if (page > maxpages * 8) {
       showMoreBtn.style.display="block"
     }
-  }) }
+  })  }}
 
   catch(err) {  
     console.log(err);
   }}
 
+  //^ FORM SUBMIT BUTTON
   form.addEventListener("submit", (event)=> {
     event.preventDefault()
     page = 1
     getImages()
+
   })
 
+  //^ SHOW MORE BUTTON
   showMoreBtn.addEventListener("click", ()=> {
     getImages()
   })
 
+//^ MAIN PAGE
+
+let ResultHome = document.getElementById("search-result")
+
+let homeImages = [ 
+  {
+  wrapper: './assests/bryan-dijkhuizen-1jkM-j2eRbk-unsplash.jpg',
+  content: "Every moment matters"
+  },
+
+  {
+    wrapper: './assests/charlesdeluvio-bVtW9eP02nI-unsplash.jpg',
+    content: "Stay hungry"
+  },
+
+  {
+    wrapper: "./assests/dayo-clinckspoor-0kki97eZQs0-unsplash.jpg",
+    content: "Some days start better than others"
+  },
+  
+  {
+    wrapper: "./assests/deanna-deshea-rPiqLTkfe6Q-unsplash.jpg",
+    content: "Hella heart eyes for you"
+  },
+
+  {
+    wrapper: "./assests/dima-panyukov-DwxlhTvC16Q-unsplash.jpg",
+    content: "A little contour and confidence"
+  },
+
+  {
+    wrapper: "./assests/dynamic-wang-_JAAQZ2wt5I-unsplash.jpg",
+    content: "Smile a little more, regret a little less"
+  },
+
+  {
+    wrapper: "./assests/hendrik-morkel-249eztzqpog-unsplash.jpg",
+    content: "Life is simple. It’s just not easy"
+  },
+
+  {
+    wrapper: "./assests/jasper-garratt-agFPSAVU-ag-unsplash.jpg",
+    content: "Being happy never goes out of style"
+  },
+
+  {
+    wrapper: "./assests/jenn-buxton-CPs_x1xeYPQ-unsplash.jpg",
+    content: "Get out there and live a little"
+  },
+
+  {
+    wrapper: "./assests/kyle-evans-Q8RkjK-bnu8-unsplash.jpg",
+    content: "All you need is love"
+  },
+
+  {
+    wrapper: "./assests/silas-schneider-H9zUXNKFhxA-unsplash.jpg",
+    content: "Grow through what you go through"
+  },
+
+  {
+    wrapper: "./assests/viktoriia-kondratiuk-DHGnb0QgCwo-unsplash.jpg",
+    content: "Call me when the rush is over"
+  },
+]
+  homeImages.map(({wrapper,content}) => {
+  searchResults.innerHTML += `<div class="search-result">
+  <img src=${wrapper} alt="Across the Matrix">
+  <a id="title" href="https://unsplash.com/photos/wbOKjgQv3nY" target="_blank">${content}</a>
+  </div>`
+  })
