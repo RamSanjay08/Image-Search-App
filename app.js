@@ -13,9 +13,9 @@ async function getImages() {
   const apiKey = "JPrtOJqiSEm6pRh4wtlCYhmA2qRoaJemKNPAj9ANagE"
   if (inputData.trim() === "") {
     alert("The search field cannot be empty")
-    return 
+    return
   }
-  for(let i = 0; i < maxpages;i++) {
+  for(let i = 0; i < maxpages; i++) {
   const data = await fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${apiKey}`)
   let response = await data.json()
   console.log(response);
