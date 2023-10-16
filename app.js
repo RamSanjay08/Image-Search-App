@@ -31,6 +31,12 @@ async function getImages() {
   let response = await data.json()
   console.log(response);
 
+  if (response.total === 0) {
+    notFound.style.display="block"
+    showMoreBtn.style.display="none"
+    return false
+    }
+
   response.results.map((result) => {
     let ImageWrapper = document.createElement("div")
     ImageWrapper.classList.add("search-result")
@@ -52,11 +58,7 @@ async function getImages() {
     }
   })}}
 
-  catch(err) {  
-    // if (response.total === 0) {
-    //   notFound.style.display="block"
-    // }
-    // showMoreBtn.style.display="none"
+  catch(err) {    
     console.log(err);
   }}
 

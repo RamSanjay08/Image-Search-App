@@ -118,7 +118,6 @@ footer {
   display: none;
   margin: 0 auto 2.29rem;
   border-radius: 1rem;
-
 }
 
 @media screen and (max-width: 1024px) {
@@ -160,4 +159,11 @@ footer {
   #search-button {
     padding: .9rem 1.3rem;
     font-size: .7rem;
-}}
+}
+
+#not-found {
+  width: 90%;
+  margin: 0 auto 2.29rem;
+  border-radius: 1rem;
+}
+  }
