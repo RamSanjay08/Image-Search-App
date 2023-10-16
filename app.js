@@ -2,6 +2,7 @@ let form = document.getElementById("search-box")
 let searchInput = document.getElementById("input-box")
 let searchResults = document.getElementById("search-results")
 let showMoreBtn = document.getElementById("show-more-button")
+let notFound = document.getElementById('not-found')
 
 let inputData = ""
 let page = 1
@@ -11,18 +12,25 @@ async function getImages() {
   try{
   inputData = searchInput.value
   const apiKey = "JPrtOJqiSEm6pRh4wtlCYhmA2qRoaJemKNPAj9ANagE"
+
+  //^ used to avoid the search field should not be empty
   if (inputData.trim() === "") {
     alert("The search field cannot be empty")
     return
   }
+
+  //^ used when the user go to second page the first page should be empty
+  //^ only the second page photos display
+  if (page === 1) {
+    searchResults.innerHTML= ""
+  }
+  
+  //^ used for to display the first 3 pages at start
   for(let i = 0; i < maxpages; i++) {
   const data = await fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${apiKey}`)
   let response = await data.json()
   console.log(response);
 
-if (page === 1) {
-  searchResults.innerHTML= ""
-}
   response.results.map((result) => {
     let ImageWrapper = document.createElement("div")
     ImageWrapper.classList.add("search-result")
@@ -42,9 +50,13 @@ if (page === 1) {
     if (page > maxpages * 8) {
       showMoreBtn.style.display="block"
     }
-  })  }}
+  })}}
 
   catch(err) {  
+    // if (response.total === 0) {
+    //   notFound.style.display="block"
+    // }
+    // showMoreBtn.style.display="none"
     console.log(err);
   }}
 
@@ -53,7 +65,6 @@ if (page === 1) {
     event.preventDefault()
     page = 1
     getImages()
-
   })
 
   //^ SHOW MORE BUTTON
@@ -62,10 +73,9 @@ if (page === 1) {
   })
 
 //^ MAIN PAGE
-
 let ResultHome = document.getElementById("search-result")
 
-let homeImages = [ 
+let homeImages = [
   {
   wrapper: './assests/bryan-dijkhuizen-1jkM-j2eRbk-unsplash.jpg',
   content: "Every moment matters"
@@ -126,9 +136,11 @@ let homeImages = [
     content: "Call me when the rush is over"
   },
 ]
+
   homeImages.map(({wrapper,content}) => {
-  searchResults.innerHTML += `<div class="search-result">
-  <img src=${wrapper} alt="Across the Matrix">
-  <a id="title" href="https://unsplash.com/photos/wbOKjgQv3nY" target="_blank">${content}</a>
+  searchResults.innerHTML += `
+  <div class="search-result">
+  <img src=${wrapper} alt="Across the Matrix" >
+  <a id="title" href=${wrapper} target="_blank">${content}</a>
   </div>`
   })
