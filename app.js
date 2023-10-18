@@ -12,11 +12,11 @@ async function getImages() {
   try{
   inputData = searchInput.value
   const apiKey = "JPrtOJqiSEm6pRh4wtlCYhmA2qRoaJemKNPAj9ANagE"
-
+    
   //^ used to avoid the search field should not be empty
   if (inputData.trim() === "") {
     alert("The search field cannot be empty")
-    return
+    return 
   }
 
   //^ used when the user go to second page the first page should be empty
