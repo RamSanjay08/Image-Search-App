@@ -123,8 +123,6 @@ let homeImages = [
     content: "Get out there and live a little"
   },
 
-  
-
   {
     wrapper: "./assests/kyle-evans-Q8RkjK-bnu8-unsplash.jpg",
     content: "All you need is love"
